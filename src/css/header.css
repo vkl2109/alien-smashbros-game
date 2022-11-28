@@ -1,0 +1,27 @@
+.headerBox {
+    width: 100%;
+    background: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.25rem solid black;
+    border-top: 0.25rem solid black;
+    color: white;
+    height: 10vh;
+}
+.navbar {
+    width: 100%;
+    background: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.25rem solid black;
+    border-top: 0.25rem solid black;
+    color: white;
+    height: 10vh;
+}
+.link-title, .level {
+    text-decoration: none;
+    color: white;
+    padding: 5rem;
+}

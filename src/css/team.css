@@ -1,0 +1,57 @@
+.teamRoster, .enemyRoster {
+    display: flex;
+    flex-direction: row;
+    outline: 0.25rem solid black;
+    height: 70vh;
+    width: 40vh;
+}
+.teamImgs, .teamStats {
+    display: flex;
+    flex-direction: column;
+    width: 20vh;
+}
+.teamCardStats {
+    outline: 0.1rem solid black;
+    height: 14vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.teamCardStats h5 {
+    margin: 0;
+    padding: 0;
+}
+.teamRoster {
+    margin-right: 10rem;
+}
+.enemyRoster {
+    margin-left: 10rem;
+}
+.teamCard {
+    height: 14vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    outline: 0.1rem solid black;
+}
+.teamImg {
+    width: 7vh;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+h4 {
+    margin: 0;
+    margin-top: 0.5rem;
+    padding: 0;
+}
+.xImg {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    z-index: 2;
+}
