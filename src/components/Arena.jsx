@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Team } from './Team'
 import { Enemy } from './Enemy'
-import { STARTER } from './StarterTeam'
 import { ENEMY } from './EnemyTeam'
 import '../css/arena.css'
 
-export const Arena = ({ level, setLevel }) => {
+export const Arena = ({ level, setLevel, team, setTeam }) => {
     const [ length, setLength ] = useState(10)
     const [ board, setBoard ] = useState([])
-    const [ team, setTeam ] = useState(STARTER)
     const [ enemyTeam, setEnemyTeam ] = useState(ENEMY)
     const [ current, setCurrent ] = useState()
     const [ enemiesBtn, setEnemiesBtn ] = useState(false)
@@ -29,7 +27,7 @@ export const Arena = ({ level, setLevel }) => {
             setPlaced(newPlaced)
             setCurrent()
         }
-        else if (board[y][x] && board[y][x].name != "Bug") {
+        else if (board[y][x]?.name != "Bug") {
             const character = board[y][x]
             let newBoard = [...board]
             newBoard[y][x] = null
@@ -96,22 +94,22 @@ export const Arena = ({ level, setLevel }) => {
                 let y = character[0]
                 let x = character[1]
                 if (x > 0 && board[y][x-1] && board[y][x-1].name == "Bug") {
-                    board[y][x-1].img = 'src/components/images/x.png'
+                    board[y][x-1].img = 'src/components/images/fire.png'
                     board[y][x-1].name = 'x'
                     setPoints(points => points + 5)
                 }
                 if (x < length - 1 && board[y][x+1] && board[y][x+1].name == "Bug") {
-                    board[y][x+1].img = 'src/components/images/x.png'
+                    board[y][x+1].img = 'src/components/images/fire.png'
                     board[y][x+1].name = 'x'
                     setPoints(points => points + 5)
                 }
                 if (y > 0 && board[y-1][x] && board[y-1][x].name == "Bug") {
-                    board[y-1][x].img = 'src/components/images/x.png'
+                    board[y-1][x].img = 'src/components/images/fire.png'
                     board[y-1][x].name = 'x'
                     setPoints(points => points + 5)
                 }
                 if (y < length - 1 && board[y+1][x] && board[y+1][x].name == "Bug") {
-                    board[y+1][x].img = 'src/components/images/x.png'
+                    board[y+1][x].img = 'src/components/images/fire.png'
                     board[y+1][x].name = 'x'
                     setPoints(points => points + 5)
                 }
@@ -120,9 +118,8 @@ export const Arena = ({ level, setLevel }) => {
         }
     }
     
-    useEffect(()=>{
-        const newBoard = Array(length).fill(null).map(row => new Array(length).fill(null))
-        setBoard(newBoard)
+    useEffect(() => {
+        setBoard(board => Array(length).fill(null).map(row => new Array(length).fill(null)))
     }, [length])
 
     useEffect(()=> {
@@ -131,17 +128,15 @@ export const Arena = ({ level, setLevel }) => {
             setPoints(points => 0)
             setTokens(tokens => tokens + 5)
             setEnemiesBtn(false)
-            if (level % 2 == 0) {
-                setLength(length => length + 1)
-            }
+            setLength(length => length + 1)
         }
     }, [points])
 
     useEffect(()=>{
-        let tempBool = true
+        let tempBool = false
         placed.map(place => {
-            if (!place) {
-                tempBool = false
+            if (place) {
+                tempBool = true;
             }
         })
         if (tempBool) {

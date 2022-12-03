@@ -16,7 +16,6 @@ export const Enemy = ({ enemyTeam }) => {
                     return (<div key={i} className="teamCardStats">
                         <h5>Strength: {member.strength}</h5>
                         <h5>Health: {member.health}</h5>
-                        <h5>Range: {member.range}</h5>
                     </div>)
                 })}
             </div>

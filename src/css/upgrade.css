@@ -1,0 +1,120 @@
+.totalUpgrade {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+}
+
+.cardsContainer {
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    flex-direction: row;
+}
+.card {
+    border: 2px solid black;
+    width: 10rem;
+    height: 15rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 10%;
+    box-shadow: 5px 5px 5px blue;
+    background: white;
+    transition: all 0.5s ease-out;
+}
+
+.card img {
+    height: 50px;
+    width: auto;
+    margin-bottom: 10px;
+}
+.card h4, p {
+    margin: 5px;
+    padding: 0;
+}
+.displayCard {
+    border: 2px solid black;
+    width: 20rem;
+    height: 14rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 10%;
+    box-shadow: 5px 5px 5px blue;
+    background: white;
+    transition: all 0.5s ease-out;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+
+.cardUpdate,
+.cardDelete {
+    border-style: 2px solid black;
+    border-radius: 10px;
+    background: none;
+    position: relative;
+    transition: all 0.5s ease-out;
+    margin: 2px;
+}
+
+.cardUpdate {
+    background: rgb(73, 189, 73);
+}
+
+.cardDelete {
+    background: #ff0800;
+}
+
+.cardUpdate:hover,
+.cardDelete:hover {
+    transform: scale(1.05);
+}
+
+.input {
+    background: white;
+    border-style: 2px solid black;
+    border-radius: 8px;
+    height: 1.5rem;
+}
+
+.submit {
+    background: rgb(96, 200, 96);
+    border-style: 2px solid black;
+    border-radius: 8px;
+    height: 1.75rem;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.upgradeContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.displayCard {
+    border: 2px solid black;
+    width: 30rem;
+    height: 14rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 10%;
+    box-shadow: 5px 5px 5px blue;
+    background: white;
+    transition: all 0.5s ease-out;
+}
