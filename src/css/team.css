@@ -1,9 +1,8 @@
 .teamRoster, .enemyRoster {
     display: flex;
     flex-direction: row;
-    outline: 0.25rem solid black;
     height: 70vh;
-    width: 40vh;
+    width: 20vh;
 }
 .teamImgs, .teamStats {
     display: flex;
@@ -31,15 +30,30 @@
     margin-left: 10rem;
 }
 .teamCard {
-    height: 14vh;
+    height: 12vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    outline: 0.1rem solid black;
+    border: 0.1rem solid black;
+    border-radius: 10%;
+    box-shadow: 5px 5px 5px blue;
+    background: white;
+    transition: all 0.5s ease-out;
+    margin: 5px;
+}
+.teamCard p {
+    font-size: 10px
+}
+.teamCard button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
 }
 .teamImg {
-    width: 7vh;
+    width: 5vh;
     height: auto;
     margin: 0;
     padding: 0;

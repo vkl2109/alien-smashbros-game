@@ -11,14 +11,14 @@ export const Enemy = ({ enemyTeam }) => {
                     </div>)
                 })}
             </div>
-            <div className="teamStats">
+            {/* <div className="teamStats">
                 {enemyTeam.map((member, i) => {
                     return (<div key={i} className="teamCardStats">
                         <h5>Strength: {member.strength}</h5>
                         <h5>Health: {member.health}</h5>
                     </div>)
                 })}
-            </div>
+            </div> */}
         </div>
     )
 }

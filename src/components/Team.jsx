@@ -1,5 +1,6 @@
 import '../css/team.css'
 import { useState } from 'react'
+import { TeamCard } from './TeamCard'
 
 export const Team = ({ enemiesBtn, team, setCurrent, placed, isClicked, setIsClicked }) => {
     const handleClick = (member, i) => {
@@ -13,7 +14,7 @@ export const Team = ({ enemiesBtn, team, setCurrent, placed, isClicked, setIsCli
 
     return(
         <div className="teamRoster">
-            <div className="teamStats">
+            {/* <div className="teamStats">
                 {team.map((member, i) => {
                     return (<div key={i} className="teamCardStats">
                         <h5>Strength: {member.strength}</h5>
@@ -21,12 +22,11 @@ export const Team = ({ enemiesBtn, team, setCurrent, placed, isClicked, setIsCli
                         <h5>Range: {member.range}</h5>
                     </div>)
                 })}
-            </div>
+            </div> */}
             <div className="teamImgs">
                 {team.map((member, i) => {
-                    return (<div key={i} className="teamCard" style={{background: isClicked[i] ? "grey" : "white"}} onClick={()=>handleClick(member, i)}>
-                        <h4>{member.name}</h4>
-                        {!placed[i] ? (<img src={member.img} className="teamImg"></img>) : (<img className="xImg" src="src/components/images/x.png"></img>)}
+                    return (<div key={i} onClick={()=>handleClick(member, i)}>
+                        <TeamCard i={i} member={member} isClicked={isClicked} placed={placed} />
                     </div>)
                 })}
             </div>

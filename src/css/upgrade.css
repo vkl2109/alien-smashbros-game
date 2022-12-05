@@ -37,24 +37,6 @@
     margin: 5px;
     padding: 0;
 }
-.displayCard {
-    border: 2px solid black;
-    width: 20rem;
-    height: 14rem;
-    margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    border-radius: 10%;
-    box-shadow: 5px 5px 5px blue;
-    background: white;
-    transition: all 0.5s ease-out;
-}
-.card:hover {
-    transform: scale(1.05);
-}
 
 .cardUpdate,
 .cardDelete {
@@ -75,7 +57,7 @@
 }
 
 .cardUpdate:hover,
-.cardDelete:hover {
+.cardDelete:hover{
     transform: scale(1.05);
 }
 
@@ -115,6 +97,59 @@
     align-items: center;
     border-radius: 10%;
     box-shadow: 5px 5px 5px blue;
+    background: lightblue;
+    transition: all 0.5s ease-out;
+}
+.displayCard h1 {
+    margin: 0;
+    padding: 0;
+}
+.titleDisplay, .headers {
+    display: flex;
+    flex-direction: row;
+}
+.miniCard {
+    border: 2px solid black;
+    width: 5rem;
+    height: 8rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 10%;
     background: white;
     transition: all 0.5s ease-out;
+}
+.miniCard:hover {
+    transform: scale(1.05);
+    background: lightgreen;
+}
+.broke {
+    border: 2px solid black;
+    width: 10rem;
+    height: 5rem;
+    z-index: 1;
+    margin: 1rem;
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 10%;
+    background: red;
+}
+.broke p {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.broke button {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    border: none;
+    background: none;
 }
