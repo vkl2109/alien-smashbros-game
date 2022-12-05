@@ -4,4 +4,5 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-image: url("src/components/images/sky.png")
 }

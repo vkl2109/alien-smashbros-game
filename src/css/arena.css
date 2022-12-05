@@ -12,6 +12,7 @@
     border-bottom: 0.25rem solid black;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 .arenaContainer {
     display: flex;
@@ -23,9 +24,10 @@
 .arenaBoundary {
     display: flex;
     flex-direction: column;
-    border: 0.25rem solid black;
+    border: 0.25rem solid white;
     border-radius: 1rem;
     box-shadow: 5px 5px 5px blue;
+    background: rgba(255, 255, 255, 0.2);
     width: 70vh;
     height: 70vh;
 }
@@ -35,7 +37,7 @@
 }
 .gameBoardSquare {
     display: flex;
-    outline: 0.1rem solid black;
+    outline: 0.1rem solid white;
     border-radius: 5px;
     justify-content: center;
     align-items: center;

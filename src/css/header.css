@@ -1,6 +1,5 @@
 .headerBox {
     width: 100%;
-    background: blue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +10,6 @@
 }
 .navbar {
     width: 100%;
-    background: blue;
     display: flex;
     justify-content: center;
     align-items: center;

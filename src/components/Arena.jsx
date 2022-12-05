@@ -92,7 +92,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
         setFightBtn(false)
         setDone(false)
         setEnemyTeam(ENEMY)
-        setTokens(tokens => 0)
+        setTokens(tokens => 5)
         setPoints(points => 0)
         setLevel(level => 1)
         setLength(length => 10)
@@ -142,6 +142,45 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
                         s = s - 1
                     }
                 }
+                if (x > 0 && y > 0 && board[y-1][x-1] && board[y-1][x-1].name == "Alien") {
+                    if (r > 2 && s > 0) {
+                        board[y-1][x-1].img = 'src/components/images/fire.png'
+                        board[y-1][x-1].name = 'x'
+                        setPoints(points => points + 5)
+                        s = s - 1
+                    }
+                }
+                if (x > 0 && y < length - 1 && board[y+1][x-1] && board[y+1][x-1].name == "Alien") {
+                    if (r > 2 && s > 0) {
+                        board[y+1][x-1].img = 'src/components/images/fire.png'
+                        board[y+1][x-1].name = 'x'
+                        setPoints(points => points + 5)
+                        s = s - 1
+                    }
+                }
+                if (x < length - 1 && y < length - 1 && board[y+1][x+1] && board[y+1][x+1].name == "Alien") {
+                    if (r > 2 && s > 0) {
+                        board[y+1][x+1].img = 'src/components/images/fire.png'
+                        board[y+1][x+1].name = 'x'
+                        setPoints(points => points + 5)
+                        s = s - 1
+                    }
+                }
+                if (x < length - 1 && y > 0 && board[y-1][x+1] && board[y-1][x+1].name == "Alien") {
+                    if (r > 2 && s > 0) {
+                        board[y-1][x+1].img = 'src/components/images/fire.png'
+                        board[y-1][x+1].name = 'x'
+                        setPoints(points => points + 5)
+                        s = s - 1
+                    }
+                }
+                setTeam(team => team.map(m => {
+                    if (m.id === i) {
+                        let newM = {...m, health: h}
+                        return newM
+                    }
+                    return m
+                }))
             })
             setFightBtn(true)
         }
