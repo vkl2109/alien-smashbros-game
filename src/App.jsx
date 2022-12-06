@@ -2,6 +2,7 @@ import './App.css'
 import { Header } from './components/Header'
 import { Arena } from './components/Arena'
 import { Upgrade } from './components/Upgrade'
+import { Base } from './components/Base'
 import { useState, useEffect } from 'react'
 import { STARTER } from './components/StarterTeam'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -28,6 +29,7 @@ const App = () => {
         <Routes>
             <Route path={'/'} element={<Arena team={team} setTeam={setTeam} tokens={tokens} setTokens={setTokens} level={level} setLevel={setLevel}/>}/>
             <Route path={'/upgrade'} element={<Upgrade team={team} setTeam={setTeam} tokens={tokens} setTokens={setTokens} />}/>
+            <Route path={'/base'} element={<Base team={team} setTeam={setTeam} />}/>
         </Routes>
       </div>
     </BrowserRouter>
