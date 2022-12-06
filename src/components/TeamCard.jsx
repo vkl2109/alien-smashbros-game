@@ -5,16 +5,22 @@ export const TeamCard = ({ i, member, placed, isClicked}) => {
     const [ flip, setFlip ] = useState(true)
 
     return(
-        <div className="teamCard" style={{background: isClicked[i] ? "lightblue" : "white",
-        transform: isClicked[i] ? "scale(1.1)" : "scale(1)"}}>
-            <button onClick={() => setFlip(flip => !flip)}>()</button>
-            <h4>{member.name}</h4>
-            {flip ? (!placed[i] ? (<img src={member.img} className="teamImg"></img>) : (<img className="xImg" src="src/components/images/x.png"></img>)) : 
-            (<div>
-                <p>Strength: {member.strength}</p>
-                <p>Health: {member.health}</p>
-                <p>Range: {member.range}</p>
-            </div>)}
+        <div className="enemyCard" style={{transform: isClicked[i] ? "scale(1.1)" : "scale(1)"}}>
+            <div className="enemyCard-inner" style={{transform: flip ? "scale(1)" : "rotateY(180deg)", 
+            background: isClicked[i] ? "lightblue" : "white"}}>
+                <div className="enemy-card-front">
+                    <img className="flip" src="src/components/images/flippy.png" onClick={() => setFlip(flip => !flip)} />
+                    <h4>{member.name}</h4>
+                    {!placed[i] ? (<img src={member.img} className="teamImg"></img>) : (<img className="xImg" src="src/components/images/x.png"></img>)} 
+                </div>
+                <div className="enemy-card-back">
+                    <img className="flip" src="src/components/images/flippy.png" onClick={() => setFlip(flip => !flip)} />
+                    <h2>Strength: {member.strength}</h2>
+                    <h2>Health: {member.health}</h2>
+                    <h2>Range: {member.range}</h2>
+                </div>
+            </div>
+            
         </div>
     )
 }

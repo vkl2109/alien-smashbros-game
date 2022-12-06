@@ -63,6 +63,66 @@ h4 {
     margin-top: 0.5rem;
     padding: 0;
 }
+.enemyCard {
+    height: 12vh;
+    transition: all 0.5s ease-out;
+    margin: 5px;
+}
+.enemyCard-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.1rem solid black;
+    border-radius: 10%;
+    box-shadow: 5px 5px 5px blue;
+    background: white;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.enemyCard:hover .enemyCard-inner {
+    transform: rotateY(180deg);
+}
+.enemy-card-front,
+.enemy-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.flip {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background: none;
+    border: none;
+}
+
+.enemy-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 10px;
+}
+.enemy-card-back h2 {
+    margin: 3px;
+}
+
 .xImg {
     width: 50%;
     height: 50%;

@@ -14,15 +14,6 @@ export const Team = ({ enemiesBtn, team, setCurrent, placed, isClicked, setIsCli
 
     return(
         <div className="teamRoster">
-            {/* <div className="teamStats">
-                {team.map((member, i) => {
-                    return (<div key={i} className="teamCardStats">
-                        <h5>Strength: {member.strength}</h5>
-                        <h5>Health: {member.health}</h5>
-                        <h5>Range: {member.range}</h5>
-                    </div>)
-                })}
-            </div> */}
             <div className="teamImgs">
                 {team.map((member, i) => {
                     return (<div key={i} onClick={()=>handleClick(member, i)}>

@@ -188,6 +188,12 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
     
     useEffect(() => {
         setBoard(board => Array(length).fill(null).map(row => new Array(length).fill(null)))
+        setIsClicked([false, false, false, false, false])
+        setCurrent()
+        setPlaced([false, false, false, false, false])
+        setFightBtn(false)
+        setDone(false)
+        setEnemyTeam(ENEMY)
     }, [length])
 
     useEffect(()=> {

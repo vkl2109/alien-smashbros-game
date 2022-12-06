@@ -24,8 +24,9 @@
     align-items: center;
     border-radius: 10%;
     box-shadow: 5px 5px 5px blue;
-    background: white;
+    background: rgba(255, 255, 255, 1);
     transition: all 0.5s ease-out;
+    opacity: 0.9;
 }
 
 .card img {
@@ -97,7 +98,7 @@
     align-items: center;
     border-radius: 10%;
     box-shadow: 5px 5px 5px blue;
-    background: lightblue;
+    background: rgba(173, 216, 230, 0.7);
     transition: all 0.5s ease-out;
 }
 .displayCard h1 {
