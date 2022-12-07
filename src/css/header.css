@@ -18,8 +18,11 @@
     color: white;
     height: 10vh;
 }
+.link-title {
+    width: 33vw;
+    text-align: center;
+}
 .link-title, .level {
     text-decoration: none;
     color: white;
-    padding: 5rem;
 }

@@ -38,6 +38,9 @@
     color: red;
     margin: 0;
 }
+.search-left h1 {
+    margin-bottom: 20px;
+}
 .staged {
     display: flex;
     justify-content: center;

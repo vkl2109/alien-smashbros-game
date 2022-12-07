@@ -55,16 +55,25 @@
     border-radius: 1rem;
     height: 5vh;
     margin: 2rem;
+    color: white;
 }
 .clearBtn, .resetBtn {
     border-radius: 1rem;
     height: 5vh;
     margin: 2rem;
+    color: white;
+}
+.clearBtn {
+    background-color: goldenrod;
+}
+.resetBtn {
+    background: red;
 }
 .fightBtn {
     border-radius: 1rem;
     height: 5vh;
     margin: 2rem;
+    color: white;
 }
 h1 {
     margin: 2rem;
