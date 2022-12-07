@@ -84,9 +84,6 @@ h4 {
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
-.enemyCard:hover .enemyCard-inner {
-    transform: rotateY(180deg);
-}
 .enemy-card-front,
 .enemy-card-back {
     position: absolute;

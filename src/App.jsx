@@ -5,12 +5,14 @@ import { Upgrade } from './components/Upgrade'
 import { Base } from './components/Base'
 import { useState, useEffect } from 'react'
 import { STARTER } from './components/StarterTeam'
+import { LIBRARY } from './components/Library'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const App = () => {
   const [ team, setTeam ] = useState(STARTER);
   const [ tokens, setTokens ] = useState(5);
   const [ level, setLevel ] = useState(1);
+  const [ library, setLibrary ] = useState(LIBRARY)
 
   // useEffect(() => {
   //       const request = async () => {
@@ -27,9 +29,9 @@ const App = () => {
       <div className="App">
         <Header />
         <Routes>
-            <Route path={'/'} element={<Arena team={team} setTeam={setTeam} tokens={tokens} setTokens={setTokens} level={level} setLevel={setLevel}/>}/>
+            <Route path={'/'} element={<Base team={team} setTeam={setTeam} library={library} setLibrary={setLibrary}/>}/>
+            <Route path={'/arena'} element={<Arena team={team} setTeam={setTeam} tokens={tokens} setTokens={setTokens} level={level} setLevel={setLevel}/>}/>
             <Route path={'/upgrade'} element={<Upgrade team={team} setTeam={setTeam} tokens={tokens} setTokens={setTokens} />}/>
-            <Route path={'/base'} element={<Base team={team} setTeam={setTeam} />}/>
         </Routes>
       </div>
     </BrowserRouter>

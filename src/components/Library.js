@@ -1,42 +1,42 @@
 export const LIBRARY = [
     {
-        id: 0,
-        name: "DK",
+        id: 5,
+        name: "Link",
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/dk.png"
+        img: "src/components/images/link.png"
     },
     {
-        id: 1,
-        name: "Kirby",
+        id: 6,
+        name: "Samus",
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/kirby.png"
+        img: "src/components/images/samus.png"
     },
     {
-        id: 2,
-        name: "Mario",
+        id: 7,
+        name: "Fox",
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/mario.png"
+        img: "src/components/images/fox.png"
     },
     {
-        id: 3,
-        name: "Pikachu",
+        id: 8,
+        name: "Captain Falcon",
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/pikachu.png"
+        img: "src/components/images/falcon.png"
     },
     {
-        id: 4,
-        name: "Yoshi",
+        id: 9,
+        name: "Roy",
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/yoshi.png"
+        img: "src/components/images/roy.png"
     }
 ]

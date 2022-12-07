@@ -5,7 +5,7 @@ export const EnemyCard = ({ member, i }) => {
     const [ flip, setFlip ] = useState(true)
 
     return(<div key={i} className="enemyCard">
-        <div className="enemyCard-inner" style={{transform: flip ? "scale(1)" : "rotateY(180deg)"}}onClick={()=>setFlip(flip => !flip)}>
+        <div className="enemyCard-inner" style={{transform: flip ? "scale(1)" : "rotateY(180deg)"}} onClick={()=>setFlip(flip => !flip)}>
             <div className="enemy-card-front">
                 <h4>{member.name}</h4>
                 <img src={member.img} className="teamImg"></img>

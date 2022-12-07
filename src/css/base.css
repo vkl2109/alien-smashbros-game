@@ -5,6 +5,11 @@
     flex: 1;
     align-items: center;
 }
+.totalBase h1 {
+    color: white;
+    margin: 0;
+    margin-top: 5px;
+}
 .baseContainer,
 .libraryContainer,
 .search {
@@ -12,6 +17,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    margin: 10px;
+}
+.baseContainer {
+    margin-bottom: 30px;
 }
 .libraryContainer {
     width: 90vw;
@@ -23,21 +32,21 @@
     align-items: center;
     flex-direction: column;
     color: white;
+    margin-bottom: 30px;
 }
 .search-left h2 {
     color: red;
+    margin: 0;
 }
 .staged {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-.baseCard {
-    border: 2px solid black;
+.stageCard {
     width: 10rem;
     height: 10rem;
-    margin: 1rem;
+    outline: 2px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,15 +57,59 @@
     background: rgba(255, 255, 255, 0.9);
     transition: all 0.5s ease-out;
     opacity: 0.9;
+    margin: 5px;
+}
+.baseCard {
+    width: 10rem;
+    height: 10rem;
+    transition: all 0.5s ease-out;
+    margin: 5px;
+}
+.baseCard-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.1rem solid black;
+    border-radius: 10%;
+    box-shadow: 5px 5px 5px blue;
+    background: rgba(255, 255, 255, 0.9);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 .baseCard img {
     height: 50px;
     width: auto;
     margin-bottom: 10px;
 }
-.baseCard h4 {
+.base-card-front,
+.base-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.base-card-back {
+    color: black;
+    transform: rotateY(180deg);
+    font-size: 10px;
+}
+.base-card-front h4 {
     margin: 5px;
     padding: 0;
+}
+.base-card-back h2 {
+    margin: 3px;
 }
 .cardUpdate,
 .cardDelete {

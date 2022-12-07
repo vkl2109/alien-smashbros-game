@@ -1,33 +1,45 @@
 import '../css/base.css'
-import { LIBRARY } from './Library'
 import { BaseCard } from './BaseCard'
 import { LibraryCard } from './LibraryCard'
 import { useState } from 'react'
 
-export const Base = ({ team, setTeam }) => {
+export const Base = ({ team, setTeam, library, setLibrary }) => {
 
-    const [ library, setLibrary ] = useState(LIBRARY)
     const [ staged, setStaged ] = useState()
     const [ input, setInput ] = useState()
     const [ pokemon, setPokemon ] = useState()
 
     const handleRemove = (member) => {
-        setTeam(team => [...team.filter(m => m.id !== member.id)])
+        setTeam(team => [...team.map(m => {
+            if (!m || m.name === member.name) {
+                return null
+            }
+            return m
+        })])
         setLibrary(library => [...library, member])
     }
 
     const handleAdd = (i) => {
         if (staged) {
-            setTeam(team => [...team.splice(i, 1, staged)])
+            setTeam(team => [...team.map((m, j) => {
+                if (!m && j === i) {
+                    return {...staged, "id": i}
+                }
+                return m
+            })])
         }
+        setStaged()
     }
 
     const handleStaged = (member) => {
-        setLibrary(library => [...library.filter(m => m.id !== member.id)])
-        setStaged(member)
+        if (staged) {
+            setLibrary(library => [...library, staged])
+        }
+        setLibrary(library => [...library.filter(m => m.name !== member.name)])
+        setStaged(staged => member)
     }
     const handleUnStaged = () => {
-        setLibrary([...library, staged])
+        setLibrary(library => [...library, staged])
         setStaged()
     }
     const getPokemon = async (name) => {
@@ -35,7 +47,7 @@ export const Base = ({ team, setTeam }) => {
         req.json().then(pk => {
             setPokemon(pk);
             const newChar = {
-                "id": library.length,
+                "id": library.length + 5,
                 "name": pk.name,
                 "strength": 1,
                 "health": 10,
@@ -57,17 +69,18 @@ export const Base = ({ team, setTeam }) => {
 
     return(
         <div className="totalBase">
+            <h1>TEAM</h1>
             <div className="baseContainer">
                 {
                     team.map((member, i) => {
                         if (member) {
                             return (
-                                <BaseCard key={member.id} member={member} handleRemove={handleRemove}/>
+                                <BaseCard key={i} member={member} handleRemove={handleRemove}/>
                             )
                         }
                         else {
                             return (
-                                <div className="baseCard">
+                                <div key={i} className="stageCard">
                                     <h4>Add Here</h4>
                                     <div className="btnDiv">
                                         <button onClick={() => handleAdd(i)}className="cardUpdate">Add</button>
@@ -88,22 +101,19 @@ export const Base = ({ team, setTeam }) => {
                 </div>
                 <div className="staged">
                     {staged ? (
-                                <div className="baseCard">
-                                    <h4>{staged.name}</h4>
-                                    <img src={staged.img} placeholder="no image found"></img>
-                                    <button onClick={()=>handleUnStaged()}className="cardDelete">Remove</button>
-                                </div>) : 
-                                (<div className="baseCard">
+                                <BaseCard member={staged} handleRemove={handleUnStaged} />) : 
+                                (<div className="stageCard">
                                     <h4>Stage Empty</h4>
                                 </div>)
                     }
                 </div>
             </div>
+            <h1>LIBRARY</h1>
             <div className="libraryContainer">
                 {
                     library.map((member, i) => {
                        return (
-                            <LibraryCard key={member.id} member={member} handleStaged={handleStaged}/>
+                            <LibraryCard key={i} member={member} handleStaged={handleStaged}/>
                         )
                     })
                 }

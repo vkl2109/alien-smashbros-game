@@ -20,7 +20,6 @@ export const TeamCard = ({ i, member, placed, isClicked}) => {
                     <h2>Range: {member.range}</h2>
                 </div>
             </div>
-            
         </div>
     )
 }
