@@ -13,6 +13,7 @@ const App = () => {
   const [ tokens, setTokens ] = useState(5);
   const [ level, setLevel ] = useState(1);
   const [ library, setLibrary ] = useState(LIBRARY)
+  const [ difficulty, setDifficulty ] = useState("easy")
 
   // useEffect(() => {
   //       const request = async () => {
@@ -30,7 +31,7 @@ const App = () => {
         <Header />
         <Routes>
             <Route path={'/'} element={<Base team={team} setTeam={setTeam} library={library} setLibrary={setLibrary}/>}/>
-            <Route path={'/arena'} element={<Arena team={team} setTeam={setTeam} tokens={tokens} setTokens={setTokens} level={level} setLevel={setLevel}/>}/>
+            <Route path={'/arena'} element={<Arena team={team} setTeam={setTeam} tokens={tokens} setTokens={setTokens} level={level} setLevel={setLevel} difficulty={difficulty} setDifficulty={setDifficulty}/>}/>
             <Route path={'/upgrade'} element={<Upgrade team={team} setTeam={setTeam} tokens={tokens} setTokens={setTokens} />}/>
         </Routes>
       </div>

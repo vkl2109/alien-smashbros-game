@@ -50,10 +50,14 @@
 
 .cardUpdate {
     background: rgb(73, 189, 73);
+    border: 1px solid black;
+    color: black;
 }
 
 .cardDelete {
     background: #ff0800;
+    border: 1px solid black;
+    color: black;
 }
 
 .cardUpdate:hover,
@@ -73,6 +77,8 @@
     border-style: 2px solid black;
     border-radius: 8px;
     height: 1.75rem;
+    border: 1px solid black;
+    color: black;
 }
 
 .search {
@@ -121,6 +127,25 @@
     border-radius: 10%;
     background: white;
     transition: all 0.5s ease-out;
+    animation-name: flippyboi;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+@keyframes flippyboi {
+    from {
+        transform: scale(1.1);
+    }
+    33% {
+        transform: rotateY(180deg);
+    }
+    66% {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 .miniCard:hover {
     transform: scale(1.05);

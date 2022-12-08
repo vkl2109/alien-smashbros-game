@@ -4,7 +4,7 @@ import { TeamCard } from './TeamCard'
 
 export const Team = ({ enemiesBtn, team, setCurrent, placed, isClicked, setIsClicked }) => {
     const handleClick = (member, i) => {
-        if (enemiesBtn && !placed[i]) {
+        if (enemiesBtn && !placed[i] && member.health > 0) {
             setCurrent(member);
             let tempClicked = [false, false, false, false, false]
             tempClicked[i] = true;

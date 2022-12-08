@@ -4,7 +4,7 @@ import { Enemy } from './Enemy'
 import { ENEMY } from './EnemyTeam'
 import '../css/arena.css'
 
-export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => {
+export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, difficulty, setDifficulty }) => {
     const [ length, setLength ] = useState(level + 9)
     const [ board, setBoard ] = useState([])
     const [ enemyTeam, setEnemyTeam ] = useState(ENEMY)
@@ -15,6 +15,17 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
     const [ done, setDone ] = useState(false)
     const [ fightBtn, setFightBtn ] = useState(false)
     const [ points, setPoints ] = useState(0)
+    let multiplier = 1;
+    if (difficulty == "easy") {
+        multiplier = 1;
+    }
+    if (difficulty == "medium") {
+        multiplier = 2;
+    }
+    if (difficulty == "hard") {
+        multiplier = 3;
+    }
+
 
     // useEffect(() => {
     //     const request = async () => {
@@ -37,7 +48,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
             setPlaced(newPlaced)
             setCurrent()
         }
-        else if (board[y][x]?.name != "Alien") {
+        else if (board[y][x]?.name != "Alien" && board[y][x]?.name != "x") {
             const character = board[y][x]
             let newBoard = [...board]
             newBoard[y][x] = null
@@ -52,11 +63,22 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
     const generateEnemies = () => {
         if (!enemiesBtn) {
             let counter = 0
-            while(counter < length) {
+            let bossN = true
+            while(counter < length * multiplier) {
                 let x = Math.floor(Math.random() * length)
                 let y = Math.floor(Math.random() * length)
+                let z = Math.floor(Math.random() * 3)
                 if (!board[y][x]) {
-                    board[y][x] = {...enemyTeam[0]}
+                    if (bossN && difficulty != "easy") {
+                        board[y][z] = {...enemyTeam[4]}
+                        bossN = false
+                    }
+                    else if (z == 2 && level > 1) {
+                        board[y][x] = {...enemyTeam[2]}
+                    }
+                    else {
+                        board[y][x] = {...enemyTeam[0]}
+                    }
                     counter += 1
                 }
             }
@@ -68,7 +90,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
         if (fightBtn) {
             board.map((row, y) => {
                 row.map((square, x) => {
-                    if (square && square.name != 'Alien') {
+                    if (square?.name != 'Alien') {
                         board[y][x] = null
                     }
                 })
@@ -106,78 +128,157 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
                 let h = team[i].health
                 let y = character[0]
                 let x = character[1]
-                if (x > 0 && board[y][x-1] && board[y][x-1].name == "Alien") {
-                    h = h - 1
+                if (x > 0 && board[y][x-1]?.name == "Alien") {
+                    h = h - board[y][x-1].strength
                     if (s > 0) {
-                        board[y][x-1].img = 'src/components/images/fire.png'
-                        board[y][x-1].name = 'x'
-                        setPoints(points => points + 5)
-                        s = s - 1
+                        if (board[y][x-1].health == 1) {
+                            board[y][x-1].img = 'src/components/images/fire.png'
+                            board[y][x-1].name = 'x'
+                            setPoints(points => points + 5)
+                            s = s - 1;
+                        }
+                        else if (board[y][x-1].health == 2) {
+                            board[y][x-1] = {...enemyTeam[0]}
+                            s = s - 1;
+                        }
+                        else {
+                            board[y][x-1] = {...enemyTeam[2]}
+                            s = s - 1;
+                        }
                     }
                 }
-                if (x < length - 1 && board[y][x+1] && board[y][x+1].name == "Alien") {
-                    h = h - 1
+                if (x < length - 1 && board[y][x+1]?.name == "Alien") {
+                    h = h - board[y][x+1].strength
                     if (s > 0) {
-                        board[y][x+1].img = 'src/components/images/fire.png'
-                        board[y][x+1].name = 'x'
-                        setPoints(points => points + 5)
-                        s = s - 1
+                        if (board[y][x+1].health == 1) {
+                            board[y][x+1].img = 'src/components/images/fire.png'
+                            board[y][x+1].name = 'x'
+                            setPoints(points => points + 5)
+                            s = s - 1;
+                        }
+                        else if (board[y][x+1].health == 2) {
+                            board[y][x+1] = {...enemyTeam[0]}
+                            s = s - 1;
+                        }
+                        else {
+                            board[y][x+1] = {...enemyTeam[2]}
+                            s = s - 1;
+                        }
                     }
                 }
-                if (y > 0 && board[y-1][x] && board[y-1][x].name == "Alien") {
-                    h = h - 1
+                if (y > 0 && board[y-1][x]?.name == "Alien") {
+                    h = h - board[y-1][x].strength
                     if (r > 1 && s > 0) {
-                        board[y-1][x].img = 'src/components/images/fire.png'
-                        board[y-1][x].name = 'x'
-                        setPoints(points => points + 5)
-                        s = s - 1
+                        if (board[y-1][x].health == 1) {
+                            board[y-1][x].img = 'src/components/images/fire.png'
+                            board[y-1][x].name = 'x'
+                            setPoints(points => points + 5)
+                            s = s - 1
+                        }
+                        else if (board[y-1][x].health == 2) {
+                            board[y-1][x] = {...enemyTeam[0]}
+                            s = s - 1;
+                        }
+                        else {
+                            board[y-1][x] = {...enemyTeam[2]}
+                            s = s - 1;
+                        }
                     }
                 }
-                if (y < length - 1 && board[y+1][x] && board[y+1][x].name == "Alien") {
-                    h = h - 1
+                if (y < length - 1 && board[y+1][x]?.name == "Alien") {
+                    h = h - board[y+1][x].strength
                     if (r > 1 && s > 0) {
-                        board[y+1][x].img = 'src/components/images/fire.png'
-                        board[y+1][x].name = 'x'
-                        setPoints(points => points + 5)
-                        s = s - 1
+                        if (board[y+1][x].health == 1) {
+                            board[y+1][x].img = 'src/components/images/fire.png'
+                            board[y+1][x].name = 'x'
+                            setPoints(points => points + 5)
+                            s = s - 1
+                        }
+                        else if (board[y+1][x].health == 2) {
+                            board[y+1][x] = {...enemyTeam[0]}
+                            s = s - 1;
+                        }
+                        else {
+                            board[y+1][x] = {...enemyTeam[2]}
+                            s = s - 1;
+                        }
                     }
                 }
-                if (x > 0 && y > 0 && board[y-1][x-1] && board[y-1][x-1].name == "Alien") {
+                if (x > 0 && y > 0 && board[y-1][x-1]?.name == "Alien") {
                     if (r > 2 && s > 0) {
-                        board[y-1][x-1].img = 'src/components/images/fire.png'
-                        board[y-1][x-1].name = 'x'
-                        setPoints(points => points + 5)
-                        s = s - 1
+                        if (board[y-1][x-1].health == 1) {
+                            board[y-1][x-1].img = 'src/components/images/fire.png'
+                            board[y-1][x-1].name = 'x'
+                            setPoints(points => points + 5)
+                            s = s - 1
+                        }
+                        else if (board[y-1][x-1].health == 2) {
+                            board[y-1][x-1] = {...enemyTeam[0]}
+                            s = s - 1;
+                        }
+                        else {
+                            board[y-1][x-1] = {...enemyTeam[2]}
+                            s = s - 1;
+                        }
                     }
                 }
-                if (x > 0 && y < length - 1 && board[y+1][x-1] && board[y+1][x-1].name == "Alien") {
+                if (x > 0 && y < length - 1 && board[y+1][x-1]?.name == "Alien") {
                     if (r > 2 && s > 0) {
-                        board[y+1][x-1].img = 'src/components/images/fire.png'
-                        board[y+1][x-1].name = 'x'
-                        setPoints(points => points + 5)
-                        s = s - 1
+                        if (board[y+1][x-1].health == 1) {
+                            board[y+1][x-1].img = 'src/components/images/fire.png'
+                            board[y+1][x-1].name = 'x'
+                            setPoints(points => points + 5)
+                            s = s - 1
+                        }
+                        else if (board[y+1][x-1].health == 2) {
+                            board[y+1][x-1] = {...enemyTeam[0]}
+                            s = s - 1;
+                        }
+                        else {
+                            board[y+1][x-1] = {...enemyTeam[2]}
+                            s = s - 1;
+                        }
                     }
                 }
-                if (x < length - 1 && y < length - 1 && board[y+1][x+1] && board[y+1][x+1].name == "Alien") {
+                if (x < length - 1 && y < length - 1 && board[y+1][x+1]?.name == "Alien") {
                     if (r > 2 && s > 0) {
-                        board[y+1][x+1].img = 'src/components/images/fire.png'
-                        board[y+1][x+1].name = 'x'
-                        setPoints(points => points + 5)
-                        s = s - 1
+                        if (board[y+1][x+1].health == 1) {
+                            board[y+1][x+1].img = 'src/components/images/fire.png'
+                            board[y+1][x+1].name = 'x'
+                            setPoints(points => points + 5)
+                            s = s - 1
+                        }
+                        else if (board[y+1][x+1].health == 2) {
+                            board[y+1][x+1] = {...enemyTeam[0]}
+                            s = s - 1;
+                        }
+                        else {
+                            board[y+1][x+1] = {...enemyTeam[2]}
+                            s = s - 1;
+                        }
                     }
                 }
-                if (x < length - 1 && y > 0 && board[y-1][x+1] && board[y-1][x+1].name == "Alien") {
+                if (x < length - 1 && y > 0 && board[y-1][x+1]?.name == "Alien") {
                     if (r > 2 && s > 0) {
-                        board[y-1][x+1].img = 'src/components/images/fire.png'
-                        board[y-1][x+1].name = 'x'
-                        setPoints(points => points + 5)
-                        s = s - 1
+                        if (board[y-1][x+1].health == 1) {
+                            board[y-1][x+1].img = 'src/components/images/fire.png'
+                            board[y-1][x+1].name = 'x'
+                            setPoints(points => points + 5)
+                            s = s - 1
+                        }
+                        else if (board[y-1][x+1].health == 2) {
+                            board[y-1][x+1] = {...enemyTeam[0]}
+                            s = s - 1;
+                        }
+                        else {
+                            board[y-1][x+1] = {...enemyTeam[2]}
+                            s = s - 1;
+                        }
                     }
                 }
                 setTeam(team => team.map(m => {
                     if (m.id === i) {
-                        let newM = {...m, health: h}
-                        return newM
+                        return {...m, health: h}
                     }
                     return m
                 }))
@@ -196,8 +297,12 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
         setEnemyTeam(ENEMY)
     }, [length])
 
+    useEffect(() => {
+        resetGame()
+    }, [difficulty])
+
     useEffect(()=> {
-        if (points >= length*5) {
+        if (points >= length*5*multiplier) {
             setLevel(level => level + 1)
             setPoints(points => 0)
             setTokens(tokens => tokens + 5)
@@ -221,12 +326,21 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel }) => 
         <div className="totalArena">
             <div className="statsBar">
                 <h1>Level: {level}</h1>
-                <h1>Points: {points}</h1>
-                <h1>Tokens: {tokens}</h1>
+                <div className="pointBar">
+                    <div className="points" style={{width: `${100*points/(length*5*multiplier)}%`}}></div>
+                </div>
+                <h1>{tokens} 🪙</h1>
                 <button className="enemiesBtn" style={{background: enemiesBtn ? "red" : "green"}} onClick={generateEnemies}>Enemies</button>
                 <button className="fightBtn" style={{background: fightBtn ? "red" : "green"}} onClick={fight}>Fight!</button>
                 <button className="clearBtn" onClick={clearBoard}>Next</button>
                 <button className="resetBtn" onClick={resetGame}>Reset Game</button>
+                <div className="custom-select">
+                    <select name="difficulty" onChange={(e) => setDifficulty(e.target.value)}>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
             </div>
             <div className="arenaContainer">
                 <Team enemiesBtn={enemiesBtn}team={team} setCurrent={setCurrent} placed={placed} isClicked={isClicked} setIsClicked={setIsClicked}/>

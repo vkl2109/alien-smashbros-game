@@ -93,7 +93,7 @@ export const Base = ({ team, setTeam, library, setLibrary }) => {
             </div>
             <div className="search">
                 <div className="search-left">
-                    <h1>Search for your Next Character!!</h1>
+                    <h1>Find your Next Character!!</h1>
                     {staged ? <h2>Unstage Before Searching!!</h2> : <form onSubmit={(e) => handleSubmit(e)}>
                         <input className="input" type="text" name="name" onChange={(e) => {setInput(e.target.value)}} value={input} placeholder="name"required/>
                         <button className="submit" type="submit">Submit</button>
