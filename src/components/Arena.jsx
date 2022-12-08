@@ -20,10 +20,10 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
         multiplier = 1;
     }
     if (difficulty == "medium") {
-        multiplier = 2;
+        multiplier = 1.5;
     }
     if (difficulty == "hard") {
-        multiplier = 3;
+        multiplier = 2;
     }
 
 
@@ -73,7 +73,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                         board[y][z] = {...enemyTeam[4]}
                         bossN = false
                     }
-                    else if (z == 2 && level > 1) {
+                    else if (z == 2) {
                         board[y][x] = {...enemyTeam[2]}
                     }
                     else {
@@ -276,6 +276,9 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                         }
                     }
                 }
+                if (h < 0) {
+                    h = 0;
+                }
                 setTeam(team => team.map(m => {
                     if (m.id === i) {
                         return {...m, health: h}
@@ -296,10 +299,6 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
         setDone(false)
         setEnemyTeam(ENEMY)
     }, [length])
-
-    useEffect(() => {
-        resetGame()
-    }, [difficulty])
 
     useEffect(()=> {
         if (points >= length*5*multiplier) {
