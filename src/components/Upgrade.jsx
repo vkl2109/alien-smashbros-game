@@ -39,7 +39,7 @@ export const Upgrade = ({ team, setTeam, tokens, setTokens }) => {
                                     <p></p>
                                     <p></p>
                                     <p></p>
-                                    <img src="src/components/images/x.png" placeholder="no image found"></img>
+                                    <img src="/images/x.png" placeholder="no image found"></img>
                                 </div>
                             )
                         }

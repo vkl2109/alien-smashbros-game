@@ -5,7 +5,7 @@ export const LIBRARY = [
         strength: 2,
         health: 10,
         range: 2,
-        img: "src/components/images/link.png"
+        img: "/images/link.png"
     },
     {
         id: 6,
@@ -13,7 +13,7 @@ export const LIBRARY = [
         strength: 2,
         health: 10,
         range: 2,
-        img: "src/components/images/samus.png"
+        img: "/images/samus.png"
     },
     {
         id: 7,
@@ -21,7 +21,7 @@ export const LIBRARY = [
         strength: 3,
         health: 10,
         range: 2,
-        img: "src/components/images/fox.png"
+        img: "/images/fox.png"
     },
     {
         id: 8,
@@ -29,7 +29,7 @@ export const LIBRARY = [
         strength: 3,
         health: 10,
         range: 3,
-        img: "src/components/images/falcon.png"
+        img: "/images/falcon.png"
     },
     {
         id: 9,
@@ -37,6 +37,6 @@ export const LIBRARY = [
         strength: 4,
         health: 10,
         range: 3,
-        img: "src/components/images/roy.png"
+        img: "/images/roy.png"
     }
 ]

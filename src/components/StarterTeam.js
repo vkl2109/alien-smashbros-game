@@ -5,7 +5,7 @@ export const STARTER = [
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/dk.png"
+        img: "/images/dk.png"
     },
     {
         id: 1,
@@ -13,7 +13,7 @@ export const STARTER = [
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/kirby.png"
+        img: "/images/kirby.png"
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ export const STARTER = [
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/mario.png"
+        img: "/images/mario.png"
     },
     {
         id: 3,
@@ -29,7 +29,7 @@ export const STARTER = [
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/pikachu.png"
+        img: "/images/pikachu.png"
     },
     {
         id: 4,
@@ -37,6 +37,6 @@ export const STARTER = [
         strength: 1,
         health: 10,
         range: 1,
-        img: "src/components/images/yoshi.png"
+        img: "/images/yoshi.png"
     }
 ]

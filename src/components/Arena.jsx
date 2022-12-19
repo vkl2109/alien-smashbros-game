@@ -132,7 +132,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                     h = h - board[y][x-1].strength
                     if (s > 0) {
                         if (board[y][x-1].health == 1) {
-                            board[y][x-1].img = 'src/components/images/fire.png'
+                            board[y][x-1].img = '/images/fire.png'
                             board[y][x-1].name = 'x'
                             setPoints(points => points + 5)
                             s = s - 1;
@@ -151,7 +151,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                     h = h - board[y][x+1].strength
                     if (s > 0) {
                         if (board[y][x+1].health == 1) {
-                            board[y][x+1].img = 'src/components/images/fire.png'
+                            board[y][x+1].img = '/images/fire.png'
                             board[y][x+1].name = 'x'
                             setPoints(points => points + 5)
                             s = s - 1;
@@ -170,7 +170,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                     h = h - board[y-1][x].strength
                     if (r > 1 && s > 0) {
                         if (board[y-1][x].health == 1) {
-                            board[y-1][x].img = 'src/components/images/fire.png'
+                            board[y-1][x].img = '/images/fire.png'
                             board[y-1][x].name = 'x'
                             setPoints(points => points + 5)
                             s = s - 1
@@ -189,7 +189,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                     h = h - board[y+1][x].strength
                     if (r > 1 && s > 0) {
                         if (board[y+1][x].health == 1) {
-                            board[y+1][x].img = 'src/components/images/fire.png'
+                            board[y+1][x].img = '/images/fire.png'
                             board[y+1][x].name = 'x'
                             setPoints(points => points + 5)
                             s = s - 1
@@ -207,7 +207,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                 if (x > 0 && y > 0 && board[y-1][x-1]?.name == "Alien") {
                     if (r > 2 && s > 0) {
                         if (board[y-1][x-1].health == 1) {
-                            board[y-1][x-1].img = 'src/components/images/fire.png'
+                            board[y-1][x-1].img = '/images/fire.png'
                             board[y-1][x-1].name = 'x'
                             setPoints(points => points + 5)
                             s = s - 1
@@ -225,7 +225,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                 if (x > 0 && y < length - 1 && board[y+1][x-1]?.name == "Alien") {
                     if (r > 2 && s > 0) {
                         if (board[y+1][x-1].health == 1) {
-                            board[y+1][x-1].img = 'src/components/images/fire.png'
+                            board[y+1][x-1].img = '/images/fire.png'
                             board[y+1][x-1].name = 'x'
                             setPoints(points => points + 5)
                             s = s - 1
@@ -243,7 +243,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                 if (x < length - 1 && y < length - 1 && board[y+1][x+1]?.name == "Alien") {
                     if (r > 2 && s > 0) {
                         if (board[y+1][x+1].health == 1) {
-                            board[y+1][x+1].img = 'src/components/images/fire.png'
+                            board[y+1][x+1].img = '/images/fire.png'
                             board[y+1][x+1].name = 'x'
                             setPoints(points => points + 5)
                             s = s - 1
@@ -261,7 +261,7 @@ export const Arena = ({ team, setTeam, tokens, setTokens, level, setLevel, diffi
                 if (x < length - 1 && y > 0 && board[y-1][x+1]?.name == "Alien") {
                     if (r > 2 && s > 0) {
                         if (board[y-1][x+1].health == 1) {
-                            board[y-1][x+1].img = 'src/components/images/fire.png'
+                            board[y-1][x+1].img = '/images/fire.png'
                             board[y-1][x+1].name = 'x'
                             setPoints(points => points + 5)
                             s = s - 1

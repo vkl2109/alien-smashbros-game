@@ -11,7 +11,7 @@ export const BaseCard = ({ member, handleRemove }) => {
                     <h4>{member.name}</h4>
                     <img src={member.img} placeholder="no image found"></img>
                     <div className="btnDiv">
-                        <button onClick={()=>handleRemove(member)}className="cardDelete">Remove</button>
+                        <button onClick={()=>handleRemove(member)}className="cardDelete">Library</button>
                     </div>
                 </div>
                 <div className="base-card-back">
