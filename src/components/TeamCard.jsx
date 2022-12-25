@@ -11,7 +11,7 @@ export const TeamCard = ({ i, member, placed, isClicked}) => {
                 <div className="enemy-card-front">
                     <img className="flip" src="/images/flippy.png" onClick={() => setFlip(flip => !flip)} />
                     <h4>{member.name}</h4>
-                    {!placed[i] ? (<img src={member.img} className="teamImg"></img>) : (<img className="xImg" src="src/components/images/x.png"></img>)} 
+                    {!placed[i] ? (<img src={member.img} className="teamImg"></img>) : (<img className="xImg" src="/images/x.png"></img>)} 
                 </div>
                 <div className="enemy-card-back">
                     <img className="flip" src="/images/flippy.png" onClick={() => setFlip(flip => !flip)} />
